@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialog Download dengan Progressbar</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+</head>
+<body>
+    <h1>Dialog Download</h1>
+    <button id="bukaDialog">Buka Dialog Download</button>
+    
+    <div id="dialog" title="Dialog Download">
+        <p>Proses download sedang berlangsung...</p>
+        <br>
+        <div id="progressbar"></div>
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+            $("#progressbar").progressbar({
+                max: 100,
+                value: 0
+            });
+            
+            $("#dialog").dialog({
+                autoOpen: false,
+                modal: true,
+                buttons: {
+                    "Batal": function() {
+                        $(this).dialog("close");
+                    }
+                },
+                open: function() {
+                    var progressbar = $("#progressbar");
+                    
+                    // Simulasi proses download
+                    var interval = setInterval(function() {
+                        var value = progressbar.progressbar("value");
+                        if (value >= 100) {
+                            clearInterval(interval);
+                            $("#dialog").dialog("close");
+                            alert("Download selesai!");
+                        } else {
+                            progressbar.progressbar("value", value + 5);
+                        }
+                    }, 100);
+                }
+            }); 
+            
+            $("#bukaDialog").click(function() {
+                $("#dialog").dialog("open");
+            });
+        });
+    </script>
+</body>
+</html>

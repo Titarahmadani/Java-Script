@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh jQuery Sederhana</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Contoh jQuery Sederhana</h1>
+    <p id="paragraf">Ini adalah paragraf yang akan diubah.</p>
+    <button id="tombol">Ubah Teks</button>
+    
+    <script>
+        $(document).ready(function() {
+            $("#tombol").click(function() {
+                $("#paragraf").text("Teks paragraf telah diubah!");
+            });
+        });
+    </script>
+</body>
+</html>

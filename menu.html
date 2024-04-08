@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu with jQuery</title>
+    <style>
+        .menu {
+            display: none; /* Hide menu initially */
+        }
+        .menu li {
+            list-style: none;
+            padding: 10px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Menu</h1>
+    <button id="menuButton">Menu</button>
+    <ul class="menu">
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact</li>
+    </ul>
+    
+    <script>
+        $(document).ready(function() {
+            $("#menuButton").click(function() {
+                $(".menu").toggle(); // Toggle menu visibility
+            });
+        });
+    </script>
+</body>
+</html>
